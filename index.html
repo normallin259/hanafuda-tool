@@ -308,13 +308,13 @@ button.seal:disabled{opacity:.25;cursor:default}
 <script>
 /* ---------- data ---------- */
 /* full roster in 刀帐 order */
-const DEFAULT=`童子切安纲 三日月宗近 小狐丸 石切丸 岩融 今剑 大典太光世 骚速剑 数珠丸恒次 笑面青江 鬼丸国纲 鸣狐 一期一振 鲶尾藤四郎 骨喰藤四郎 平野藤四郎 厚藤四郎 后藤藤四郎 信浓藤四郎 前田藤四郎 秋田藤四郎 博多藤四郎 乱藤四郎 五虎退 药研藤四郎 包丁藤四郎 大包平 莺丸 明石国行 萤丸 爱染国俊 千子村正 蜻蛉切 物吉贞宗 太鼓钟贞宗 龟甲贞宗 烛台切光忠 大般若长光 小龙景光 江雪左文字 宗三左文字 小夜左文字 加州清光 大和守安定 歌仙兼定 和泉守兼定 陆奥守吉行 山姥切国广 山伏国广 堀川国广 蜂须贺虎彻 浦岛虎彻 长曾祢虎彻 髭切 膝丸 大俱利伽罗 压切长谷部 不动行光 狮子王 小乌丸 抜丸 同田贯正国 鹤丸国永 太郎太刀 次郎太刀 日本号 御手杵 巴形薙刀 毛利藤四郎 笼手切江 谦信景光 小豆长光 日向正宗 静形薙刀 南泉一文字 千代金丸 山姥切长义 丰前江 祢祢切丸 白山吉光 南海太郎朝尊 肥前忠广 北谷菜切 桑名江 水心子正秀 源清麿 松井江 山鸟毛 古今传授之太刀 地藏行平 治金丸 日光一文字 太阁左文字 五月雨江 大千鸟十文字枪 泛尘 一文字则宗 村云江 姬鹤一文字 福岛光忠 七星剑 丙子椒林剑 稻叶江 笹贯 人间无骨 八丁念佛 石田正宗 实休光忠 京极正宗 孙六兼元 后家兼光 火车切 富田江 大庆直胤 九鬼正宗 云生 道誉一文字 云次 面影 古备前信房 俱利伽罗江 三郎国宗 安宅切 二筋樋贞宗 云重 柏太刀 波平行安 狐崎为次 桃太郎祐定 朝仓藤四郎`.split(/\s+/);
+const DEFAULT=`童子切安纲 三日月宗近 小狐丸 石切丸 岩融 今剑 大典太光世 骚速剑 数珠丸恒次 笑面青江 鬼丸国纲 鸣狐 一期一振 鲶尾藤四郎 骨喰藤四郎 平野藤四郎 厚藤四郎 后藤藤四郎 信浓藤四郎 前田藤四郎 秋田藤四郎 博多藤四郎 乱藤四郎 五虎退 药研藤四郎 包丁藤四郎 大包平 莺丸 明石国行 萤丸 爱染国俊 千子村正 蜻蛉切 物吉贞宗 太鼓钟贞宗 龟甲贞宗 烛台切光忠 大般若长光 小龙景光 江雪左文字 宗三左文字 小夜左文字 加州清光 大和守安定 歌仙兼定 和泉守兼定 陆奥守吉行 山姥切国广 山伏国广 堀川国广 蜂须贺虎彻 浦岛虎彻 长曾祢虎彻 髭切 膝丸 大俱利伽罗 压切长谷部 不动行光 狮子王 小乌丸 抜丸 同田贯正国 鹤丸国永 太郎太刀 次郎太刀 日本号 御手杵 巴形薙刀 毛利藤四郎 笼手切江 谦信景光 小豆长光 日向正宗 静形薙刀 南泉一文字 千代金丸 山姥切长义 丰前江 祢祢切丸 白山吉光 南海太郎朝尊 肥前忠广 北谷菜切 桑名江 水心子正秀 源清麿 松井江 山鸟毛 古今传授之太刀 地藏行平 治金丸 日光一文字 太阁左文字 五月雨江 大千鸟十文字枪 泛尘 一文字则宗 村云江 姬鹤一文字 福岛光忠 七星剑 丙子椒林剑 稻叶江 笹贯 人间无骨 八丁念佛 石田正宗 实休光忠 京极正宗 孙六兼元 后家兼光 火车切 富田江 大庆直胤 九鬼正宗 云生 道誉一文字 云次 面影 古备前信房 俱利伽罗江 三郎国宗 安宅切 二筋樋贞宗 云重 柏太刀 波平行安 狐崎为次 桃太郎祐定 朝仓藤四郎 八八王国吉`.split(/\s+/);
 /* schools follow the とうらぶ Wiki カード一覧3 (刀派順); swords not listed here are 其他 (no school) */
 const SCHOOL_SRC={
   '三条':'三日月宗近 小狐丸 石切丸 岩融 今剑',
   '三池':'大典太光世 骚速剑',
   '青江':'数珠丸恒次 笑面青江 狐崎为次',
-  '粟田口':'鬼丸国纲 鸣狐 一期一振 鲶尾藤四郎 骨喰藤四郎 平野藤四郎 厚藤四郎 后藤藤四郎 信浓藤四郎 前田藤四郎 秋田藤四郎 博多藤四郎 乱藤四郎 五虎退 药研藤四郎 包丁藤四郎 毛利藤四郎 白山吉光 朝仓藤四郎',
+  '粟田口':'鬼丸国纲 鸣狐 一期一振 鲶尾藤四郎 骨喰藤四郎 平野藤四郎 厚藤四郎 后藤藤四郎 信浓藤四郎 前田藤四郎 秋田藤四郎 博多藤四郎 乱藤四郎 五虎退 药研藤四郎 包丁藤四郎 毛利藤四郎 白山吉光 朝仓藤四郎 八八王国吉',
   '古备前':'大包平 莺丸 八丁念佛 古备前信房',
   '来':'明石国行 萤丸 爱染国俊 面影',
   '村正':'千子村正 蜻蛉切',
@@ -334,7 +334,7 @@ const SCHOOL_SRC={
   '波平':'笹贯 波平行安'
 };
 /* not yet released on the CN server */
-const CN_MISSING=new Set('童子切安纲 二筋樋贞宗 九鬼正宗 云重 柏太刀 波平行安 狐崎为次 桃太郎祐定 朝仓藤四郎'.split(' '));
+const CN_MISSING=new Set('童子切安纲 二筋樋贞宗 九鬼正宗 云重 柏太刀 波平行安 狐崎为次 桃太郎祐定 朝仓藤四郎 八八王国吉'.split(' '));
 /* added in a later version; only used by data migrations */
 const NEW_OFF=new Set('狐崎为次 朝仓藤四郎 二筋樋贞宗 九鬼正宗 云重 波平行安 童子切安纲 柏太刀'.split(' '));
 const SCHOOL_OF={};for(const [s,l] of Object.entries(SCHOOL_SRC))l.split(' ').forEach(n=>SCHOOL_OF[n]=s);
@@ -349,7 +349,7 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 let S;
 const DV=12;   /* data version; normalize() migrates older saves */
 function freshRoster(){return DEFAULT.map((n,i)=>({id:'d'+i,ord:i,name:n,on:true,school:SCHOOL_OF[n]||''}))}
-function freshState(){const roster=freshRoster();return {dv:DV,server:'jp',roster,seq:0,groups:[],src:{type:'all'},slots:[],results:{},sig:''}}
+function freshState(){const roster=freshRoster();return {dv:DV,server:'jp',roster,defs:[...DEFAULT],seq:0,groups:[],src:{type:'all'},slots:[],results:{},sig:''}}
 function load(){try{const t=localStorage.getItem(KEY);if(t){const o=JSON.parse(t);if(o&&Array.isArray(o.roster))return normalize(o)}}catch(e){}return null}
 /* fill defaults and migrate saves made by older versions of the page */
 function normalize(o){const s=Object.assign(freshState(),o);
@@ -376,6 +376,17 @@ function normalize(o){const s=Object.assign(freshState(),o);
     if(s.src.type==='group'&&!s.groups.some(g=>g.id===s.src.v)){s.src={type:'all'};s.slots=[];s.results={};s.sig=''}}
   if((o.dv||1)<11&&s.results&&Object.keys(s.results).length)s.legacyBye=true;
   if((o.dv||1)<12)s.roster.forEach(r=>{if(r.name==='狐ケ崎'+'为次')r.name='狐崎为次'});
+  /* swords added to DEFAULT after this save was made join the roster automatically.
+     s.defs remembers which defaults this save has already been offered, so ones the
+     player deleted stay deleted. Saves made before this existed (v1.0) had seen the original 130. */
+  if(!Array.isArray(o.defs))s.defs=DEFAULT.filter(n=>n!=='八八王国吉');
+  const seen=new Set(s.defs);
+  DEFAULT.forEach(n=>{if(seen.has(n)||s.roster.some(r=>r.name===n))return;
+    s.roster.push({id:'dn_'+n,name:n,on:!(s.server==='cn'&&CN_MISSING.has(n)),school:SCHOOL_OF[n]||''})});
+  s.defs=[...DEFAULT];
+  /* keep default swords in 刀帐 order even if a new one is inserted mid-list */
+  s.roster.forEach(r=>{if(r.id[0]==='d'){const d=DEFAULT.indexOf(r.name);if(d>=0)r.ord=d}});
+  sortRoster(s);
   s.dv=DV;
   delete s.per;delete s.games;return s}
 function sortRoster(s){s=s||S;s.roster.sort((a,b)=>a.ord-b.ord)}
@@ -650,6 +661,10 @@ function renderRoster(){
 
 /* changelog: newest first. Add a new entry at the top when the page changes. */
 const CHANGELOG=[
+ {d:'2026.11.24',v:'1.1',title:'',items:[
+  '新增八八王国吉（粟田口），目前收录 131 振',
+  '之后新实装的刀加入名单时，已有的存档会自动补上，原有进度不变',
+ ]},
  {d:'2026.10.19',v:'1.0',title:'',items:[
   '目前收录 130 振（至朝仓藤四郎），按刀帐顺序排列，刀派对照 wiki 整理；支持自主添加新刀',
   '支持按照刀派/自由分组开赛',
