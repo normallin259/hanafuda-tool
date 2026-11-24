@@ -500,7 +500,7 @@ let ui={tab:'bracket',round:0,view:'cards',todo:false,q:'',mode:'flat',editG:nul
 let snap=null;   /* frozen card order for 已完成场次自动排到最后 */
 try{Object.assign(ui,JSON.parse(localStorage.getItem(KEY+'-ui')||'{}'))}catch(e){}
 function saveUI(){try{localStorage.setItem(KEY+'-ui',JSON.stringify(ui))}catch(e){}}
-function fmtYu(n){return n>=10000?(n/10000).toFixed(n>=100000?1:2).replace(/\.?0+$/,'')+'万':n.toLocaleString()}
+function fmtYu(n){return n.toLocaleString()}
 
 /* ---------- rendering ---------- */
 function render(){
@@ -804,5 +804,6 @@ if(!S.slots.length||(S.sig!==sigOf()&&!hasResults()))generate();
 {const B=compute();B.rounds.forEach(rs=>rs.forEach(m=>{const x=S.results[m.r+'-'+m.i];if(x&&x.a===undefined){x.a=m.a;x.b=m.b}}))}
 render();
 </script>
+
 </body>
 </html>
