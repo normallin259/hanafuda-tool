@@ -275,9 +275,6 @@ button.seal:disabled{opacity:.25;cursor:default}
 @keyframes pop{from{transform:translateY(6px) scale(.98);opacity:0}to{transform:none;opacity:1}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
-<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}</style>
-</head>
-<body>
 <div class="wrap">
   <header class="top">
     <div class="brand">
@@ -347,7 +344,7 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 
 /* ---------- state & storage ---------- */
 let S;
-const DV=12;   /* data version; normalize() migrates older saves */
+const DV=13;   /* data version; normalize() migrates older saves */
 function freshRoster(){return DEFAULT.map((n,i)=>({id:'d'+i,ord:i,name:n,on:true,school:SCHOOL_OF[n]||''}))}
 function freshState(){const roster=freshRoster();return {dv:DV,server:'jp',roster,defs:[...DEFAULT],seq:0,groups:[],src:{type:'all'},slots:[],results:{},sig:''}}
 function load(){try{const t=localStorage.getItem(KEY);if(t){const o=JSON.parse(t);if(o&&Array.isArray(o.roster))return normalize(o)}}catch(e){}return null}
@@ -376,6 +373,9 @@ function normalize(o){const s=Object.assign(freshState(),o);
     if(s.src.type==='group'&&!s.groups.some(g=>g.id===s.src.v)){s.src={type:'all'};s.slots=[];s.results={};s.sig=''}}
   if((o.dv||1)<11&&s.results&&Object.keys(s.results).length)s.legacyBye=true;
   if((o.dv||1)<12)s.roster.forEach(r=>{if(r.name==='狐ケ崎'+'为次')r.name='狐崎为次'});
+  if((o.dv||1)<13){const a='童子切'+'安纲',b=a+'剥落';s.roster.forEach(r=>{if(r.name===a)r.name=b});
+    if(Array.isArray(o.defs))s.defs=o.defs.map(n=>n===a?b:n);
+    if(s.prevOn&&(a in s.prevOn)){s.prevOn[b]=s.prevOn[a];delete s.prevOn[a]}}
   /* swords added to DEFAULT after this save was made join the roster automatically.
      s.defs remembers which defaults this save has already been offered, so ones the
      player deleted stay deleted. Saves made before this existed (v1.0) had seen the original 130. */
